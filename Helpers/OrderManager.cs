@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
 using UProastery.Contracts;
 using UProastery.Data;
 using UProastery.Data.DB;
@@ -37,10 +38,12 @@ namespace UProastery.Helpers {
             //create order
             if (dto_in.Count > 0) {
                 List<OrderItem> orderItems = _mapper.Map<List<OrderItem>>(dto_in);
+                var username = _httpContextAcc.HttpContext?.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
+                
                 Order order = new Order {
                     Date = DateTime.Now,
                     TotalPrice = orderItems.Sum(i => i.Item.Price * i.Quantity),
-                    User = await _userManager.GetUserAsync(_httpContextAcc.HttpContext.User),
+                    User = await _userManager.FindByNameAsync(username),
                     OrderItems = orderItems
                 };
                 await _context.Set<Order>().AddAsync(order);
