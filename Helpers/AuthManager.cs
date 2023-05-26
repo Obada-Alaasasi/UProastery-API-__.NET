@@ -56,7 +56,7 @@ namespace UProastery.Helpers {
             }
 
             return new AuthResponse {
-                UserId = user._Id,
+                UserId = user.Id,
                 Token = await GenerateToken(user)
             };
         }
@@ -74,7 +74,7 @@ namespace UProastery.Helpers {
             var userClaims = await _userManager.GetClaimsAsync(user);
             var claims = new List<Claim> {
                 new Claim(JwtRegisteredClaimNames.GivenName, user.FirstName),
-                new Claim("UID", user._Id.ToString())
+                new Claim("UID", user.Id.ToString())
             }.Union(rolesClaims).Union(userClaims);
 
             //create security token

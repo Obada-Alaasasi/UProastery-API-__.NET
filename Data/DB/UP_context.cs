@@ -7,7 +7,7 @@ using UProastery.Data.User;
 namespace UProastery.Data.DB {
     
     // create a context for Uproastery database
-    public class UP_context : IdentityDbContext<ApiUser> {
+    public class UP_context : IdentityDbContext<ApiUser, ApiRole, int> {
         
         //constructor
         public UP_context(DbContextOptions<UP_context> options) : base(options) {
@@ -54,12 +54,14 @@ namespace UProastery.Data.DB {
                     Stock = 30
                 }
             );
-            modelBuilder.Entity<IdentityRole>().HasData(
-                new IdentityRole {
+            modelBuilder.Entity<ApiRole>().HasData(
+                new ApiRole {
+                    Id = 1,
                     Name = "Customer",
                     NormalizedName = "CUSTOMER"
                 },
-                new IdentityRole {
+                new ApiRole {
+                    Id = 2,
                     Name = "Administrator",
                     NormalizedName = "ADMINISTRATOR"
                 }
@@ -82,7 +84,7 @@ namespace UProastery.Data.DB {
                 .HasMany(p => p.MyOrders)
                 .WithOne(p => p.User)
                 .HasForeignKey(p => p.UserId)
-                .HasPrincipalKey(p => p._Id);
+                .HasPrincipalKey(p => p.Id);
 
             modelBuilder.Entity<OrderItem>()
                 .ToTable(tb => tb.HasTrigger("deduct_stock"));

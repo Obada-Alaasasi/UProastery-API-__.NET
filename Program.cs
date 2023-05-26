@@ -26,9 +26,8 @@ builder.Services.AddDbContext<UP_context>(options => {
 builder.Services.AddHttpContextAccessor();
 
 // add identity and role services
-builder.Services.AddIdentityCore<ApiUser>(options =>
-    options.ClaimsIdentity.UserIdClaimType = ClaimTypes.Email)
-    .AddRoles<IdentityRole>()
+builder.Services.AddIdentityCore<ApiUser>()
+    .AddRoles<ApiRole>()
     .AddEntityFrameworkStores<UP_context>();
 
 // add UserIdClaimType for user identification duting ops

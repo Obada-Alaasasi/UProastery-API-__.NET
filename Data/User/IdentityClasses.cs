@@ -3,10 +3,9 @@ using UProastery.Data.DB;
 
 namespace UProastery.Data.User {
     
-    //create a base user for the model
-    public class ApiUser : IdentityUser {
+    //create a base user for the model with int-type primary key
+    public class ApiUser : IdentityUser<int> {
 
-        public int _Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public DateTime DateEnrolled { get; set; }
@@ -14,5 +13,9 @@ namespace UProastery.Data.User {
         public int? Points { get; set; }
 
         public ICollection<Order>? MyOrders { get; set; }
+    }
+    //create a base role for the model with int-type primary key
+    public class ApiRole : IdentityRole<int> {
+
     }
 }
