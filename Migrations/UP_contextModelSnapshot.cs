@@ -8,7 +8,7 @@ using UProastery.Data.DB;
 
 #nullable disable
 
-namespace UProastery.Migrations
+namespace UProastery_API.Migrations
 {
     [DbContext(typeof(UP_context))]
     partial class UP_contextModelSnapshot : ModelSnapshot
@@ -154,14 +154,14 @@ namespace UProastery.Migrations
                         new
                         {
                             Id = 1,
-                            Added = new DateTime(2023, 5, 25, 15, 18, 20, 583, DateTimeKind.Local).AddTicks(3370),
+                            Added = new DateTime(2023, 7, 31, 14, 12, 16, 683, DateTimeKind.Local).AddTicks(8085),
                             Price = 2.5,
                             Title = "Spanish Latte"
                         },
                         new
                         {
                             Id = 2,
-                            Added = new DateTime(2023, 5, 25, 15, 18, 20, 583, DateTimeKind.Local).AddTicks(3393),
+                            Added = new DateTime(2023, 7, 31, 14, 12, 16, 683, DateTimeKind.Local).AddTicks(8099),
                             Price = 1.0,
                             Stock = 30,
                             Title = "Cookies"
@@ -169,14 +169,14 @@ namespace UProastery.Migrations
                         new
                         {
                             Id = 3,
-                            Added = new DateTime(2023, 5, 25, 15, 18, 20, 583, DateTimeKind.Local).AddTicks(3398),
+                            Added = new DateTime(2023, 7, 31, 14, 12, 16, 683, DateTimeKind.Local).AddTicks(8101),
                             Price = 1.0,
                             Title = "Espresso"
                         },
                         new
                         {
                             Id = 4,
-                            Added = new DateTime(2023, 5, 25, 15, 18, 20, 583, DateTimeKind.Local).AddTicks(3401),
+                            Added = new DateTime(2023, 7, 31, 14, 12, 16, 683, DateTimeKind.Local).AddTicks(8102),
                             Price = 6.5,
                             Stock = 30,
                             Title = "Ethiopian Coffee Beans (500g)"

@@ -5,10 +5,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
 
-namespace UProastery.Migrations
+namespace UProastery_API.Migrations
 {
     /// <inheritdoc />
-    public partial class initialMig : Migration
+    public partial class init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -57,20 +57,6 @@ namespace UProastery.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "IdentityRole",
-                columns: table => new
-                {
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    NormalizedName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_IdentityRole", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -242,12 +228,12 @@ namespace UProastery.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "IdentityRole",
+                table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "0c1c9aeb-1e18-43b5-9fce-c8f595f3ebac", null, "Customer", "CUSTOMER" },
-                    { "4b6c321e-02fd-49de-b652-7a43829d2094", null, "Administrator", "ADMINISTRATOR" }
+                    { 1, null, "Customer", "CUSTOMER" },
+                    { 2, null, "Administrator", "ADMINISTRATOR" }
                 });
 
             migrationBuilder.InsertData(
@@ -255,10 +241,10 @@ namespace UProastery.Migrations
                 columns: new[] { "Id", "Added", "Price", "Stock", "Title" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2023, 5, 25, 14, 40, 54, 283, DateTimeKind.Local).AddTicks(9462), 2.5, null, "Spanish Latte" },
-                    { 2, new DateTime(2023, 5, 25, 14, 40, 54, 283, DateTimeKind.Local).AddTicks(9484), 1.0, 30, "Cookies" },
-                    { 3, new DateTime(2023, 5, 25, 14, 40, 54, 283, DateTimeKind.Local).AddTicks(9488), 1.0, null, "Espresso" },
-                    { 4, new DateTime(2023, 5, 25, 14, 40, 54, 283, DateTimeKind.Local).AddTicks(9490), 6.5, 30, "Ethiopian Coffee Beans (500g)" }
+                    { 1, new DateTime(2023, 7, 31, 14, 12, 16, 683, DateTimeKind.Local).AddTicks(8085), 2.5, null, "Spanish Latte" },
+                    { 2, new DateTime(2023, 7, 31, 14, 12, 16, 683, DateTimeKind.Local).AddTicks(8099), 1.0, 30, "Cookies" },
+                    { 3, new DateTime(2023, 7, 31, 14, 12, 16, 683, DateTimeKind.Local).AddTicks(8101), 1.0, null, "Espresso" },
+                    { 4, new DateTime(2023, 7, 31, 14, 12, 16, 683, DateTimeKind.Local).AddTicks(8102), 6.5, 30, "Ethiopian Coffee Beans (500g)" }
                 });
 
             migrationBuilder.CreateIndex(
@@ -333,9 +319,6 @@ namespace UProastery.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
-
-            migrationBuilder.DropTable(
-                name: "IdentityRole");
 
             migrationBuilder.DropTable(
                 name: "OrderItems");

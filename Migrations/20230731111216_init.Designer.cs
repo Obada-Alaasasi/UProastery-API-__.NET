@@ -9,11 +9,11 @@ using UProastery.Data.DB;
 
 #nullable disable
 
-namespace UProastery.Migrations
+namespace UProastery_API.Migrations
 {
     [DbContext(typeof(UP_context))]
-    [Migration("20230525114054_initialMig")]
-    partial class initialMig
+    [Migration("20230731111216_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,39 +24,6 @@ namespace UProastery.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("ConcurrencyStamp")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("NormalizedName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("IdentityRole");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "0c1c9aeb-1e18-43b5-9fce-c8f595f3ebac",
-                            Name = "Customer",
-                            NormalizedName = "CUSTOMER"
-                        },
-                        new
-                        {
-                            Id = "4b6c321e-02fd-49de-b652-7a43829d2094",
-                            Name = "Administrator",
-                            NormalizedName = "ADMINISTRATOR"
-                        });
-                });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
                 {
@@ -190,14 +157,14 @@ namespace UProastery.Migrations
                         new
                         {
                             Id = 1,
-                            Added = new DateTime(2023, 5, 25, 14, 40, 54, 283, DateTimeKind.Local).AddTicks(9462),
+                            Added = new DateTime(2023, 7, 31, 14, 12, 16, 683, DateTimeKind.Local).AddTicks(8085),
                             Price = 2.5,
                             Title = "Spanish Latte"
                         },
                         new
                         {
                             Id = 2,
-                            Added = new DateTime(2023, 5, 25, 14, 40, 54, 283, DateTimeKind.Local).AddTicks(9484),
+                            Added = new DateTime(2023, 7, 31, 14, 12, 16, 683, DateTimeKind.Local).AddTicks(8099),
                             Price = 1.0,
                             Stock = 30,
                             Title = "Cookies"
@@ -205,14 +172,14 @@ namespace UProastery.Migrations
                         new
                         {
                             Id = 3,
-                            Added = new DateTime(2023, 5, 25, 14, 40, 54, 283, DateTimeKind.Local).AddTicks(9488),
+                            Added = new DateTime(2023, 7, 31, 14, 12, 16, 683, DateTimeKind.Local).AddTicks(8101),
                             Price = 1.0,
                             Title = "Espresso"
                         },
                         new
                         {
                             Id = 4,
-                            Added = new DateTime(2023, 5, 25, 14, 40, 54, 283, DateTimeKind.Local).AddTicks(9490),
+                            Added = new DateTime(2023, 7, 31, 14, 12, 16, 683, DateTimeKind.Local).AddTicks(8102),
                             Price = 6.5,
                             Stock = 30,
                             Title = "Ethiopian Coffee Beans (500g)"
@@ -300,6 +267,20 @@ namespace UProastery.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Customer",
+                            NormalizedName = "CUSTOMER"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Administrator",
+                            NormalizedName = "ADMINISTRATOR"
+                        });
                 });
 
             modelBuilder.Entity("UProastery.Data.User.ApiUser", b =>

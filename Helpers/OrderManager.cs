@@ -6,6 +6,7 @@ using UProastery.Contracts;
 using UProastery.Data;
 using UProastery.Data.DB;
 using UProastery.Data.User;
+using UProastery_API.Exceptions.Exceptions;
 
 namespace UProastery.Helpers {
 
@@ -51,11 +52,13 @@ namespace UProastery.Helpers {
             return await _context.SaveChangesAsync();
         }
 
+
+        //exception handling is tested here.....
         public async Task<OrderDTO_OUT> GetOrder(int id) {
 
             Order? order = await _context.Set<Order>().Include(o => o.OrderItems).FirstOrDefaultAsync(o => o.Id == id);
             if (order == null) {
-                return null;
+                throw new NotFoundException("Order with specified id was not found!!");
             }
             var dto_out = _mapper.Map<OrderDTO_OUT>(order);
             return dto_out;
